@@ -10,41 +10,8 @@ Remote control for DSLR and mirrorless cameras via USB connection. Built with Py
 curl -fsSL https://raw.githubusercontent.com/AlexandreMuralha/camCtrl/main/installers/linux/install.sh | bash
 ```
 
-That's it! The installer will automatically:
-- Download all necessary files
-- Check and install system dependencies (Python, gphoto2)
-- Set up the Python environment
-- Install the application
-- Create launcher command (`camctrl`)
-- Set up desktop integration
+For detailed installation instructions, see the [Installation Guide](installers/linux/INSTALL.md).
 
-## Alternative Installation Methods
-
-### Minimal Installer Package
-
-```bash
-wget https://github.com/AlexandreMuralha/camCtrl/releases/download/v0.4/camctrl-installer.tar.gz
-tar -xzf camctrl-installer.tar.gz
-cd camctrl-installer
-bash install.sh
-```
-
-### From Source (Development)
-
-```bash
-git clone https://github.com/AlexandreMuralha/camCtrl.git
-cd camctrl
-bash installers/linux/install.sh
-```
-
-## Requirements
-
-- **Python 3.7+** (will be installed automatically if missing)
-- **gphoto2 command-line tool** (will be installed automatically if missing)
-- **tkinter** (usually comes with Python)
-- **Linux/Raspberry Pi OS** (Debian/Ubuntu-based distributions)
-
-**Note:** CamCtrl uses the `gphoto2` command-line tool via subprocess - no Python packages need to be compiled or installed!
 
 ## Usage
 
@@ -56,13 +23,6 @@ camctrl
 
 Or launch from your Applications menu (Graphics → CamCtrl).
 
-## Features
-
-- **Remote Camera Control**: Control ISO, shutter speed, and aperture
-- **Image Capture**: Capture and download images directly to your computer
-- **Time-Lapse Photography**: Built-in intervalometer for automated sequences
-- **Real-Time Settings Display**: See current camera settings at a glance
-- **Cross-Platform Ready**: Architecture supports future Mac and Windows versions
 
 ## Interface Sections
 
@@ -87,14 +47,6 @@ This file includes:
 - File extensions to look for after capture
 - Future configuration options
 
-## Captures
-
-By default, captured images are saved to:
-```
-~/Pictures/camctrl/
-```
-
-You can change this location in the application interface.
 
 ## Uninstallation
 
@@ -133,22 +85,31 @@ The installer includes automatic retry logic for USB connection issues. If probl
 If you encounter permission errors:
 - Ensure your user is in the appropriate groups (usually `plugdev`)
 - Check udev rules are properly installed
-- Try running with `sudo` (not recommended for regular use)
+- Try running with `sudo`
 
 ## Documentation
 
 For detailed installation instructions and troubleshooting, see:
-- [Installation Guide](installers/linux/README.md)
+- [Installation Guide](installers/linux/INSTALL.md)
 
 ## License
 
-[Add your license information here]
+CamCtrl is licensed under the **GNU General Public License v2.0 (GPL-2.0)**.
+
+This program is free software; you can redistribute it and/or modify it under the terms of the GNU General Public License as published by the Free Software Foundation; either version 2 of the License, or (at your option) any later version.
+
+See [LICENSE](LICENSE) file for the full license text.
+
+### Third-Party Software
+
+This program uses **gphoto2**, which is licensed under GPL-2.0. gphoto2 is a command-line frontend to libgphoto2. For more information, visit: http://www.gphoto.org/
+
 
 ## Contributing
 
-[Add contribution guidelines here]
+
 
 ## Support
 
-[Add support/contact information here]
+
 
