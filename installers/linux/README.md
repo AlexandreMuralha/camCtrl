@@ -18,13 +18,6 @@ The following dependencies will be **automatically installed** during the instal
 - **gphoto2** - Command-line tool for camera communication (will be installed automatically if missing)
 - **tkinter** - GUI library (usually comes with Python, will be installed if needed)
 
-**Note:** The installer handles all dependency installation automatically. You only need:
-- Internet connection
-- `sudo` access (for installing system packages)
-- A supported Linux distribution (Debian/Ubuntu/Raspberry Pi OS)
-
-
-
 ## Installation Locations
 
 The installer supports two installation modes:
@@ -44,22 +37,6 @@ The installer supports two installation modes:
 
 The installer automatically detects if you're running as root and uses system-wide installation.
 
-## What Gets Installed
-
-1. **Application Files**
-   - `camCtrl.py` - Main application
-   - `cam_ops.py` - Camera operations module
-   - `config.py` - Configuration template
-
-2. **Python Environment**
-   - Virtual environment with all Python dependencies
-   - No Python packages required (uses standard library only)
-
-3. **System Integration**
-   - Launcher command (`camctrl`)
-   - Desktop entry (menu shortcut)
-   - Application icons
-   - USB camera permissions (if needed)
 
 ## After Installation
 
