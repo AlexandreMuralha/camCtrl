@@ -1,0 +1,5 @@
+# Python dependencies for CamCtrl
+# Note: tkinter is usually system-provided and doesn't need to be in requirements.txt
+
+gphoto2>=2.5.0
+
