@@ -1,10 +1,10 @@
-# CamCtrl Installation Guide
+# CamCtrl Linux Installation Guide
 
 This guide provides detailed instructions for installing CamCtrl on Linux and Raspberry Pi systems.
 
 ## Quick Start
 
-**Easiest method - one command:**
+**One command installation:**
 
 ```bash
 curl -fsSL https://raw.githubusercontent.com/AlexandreMuralha/camCtrl/main/installers/linux/install.sh | bash
@@ -12,64 +12,18 @@ curl -fsSL https://raw.githubusercontent.com/AlexandreMuralha/camCtrl/main/insta
 
 ## System Requirements
 
-- **Operating System**: Linux (Debian/Ubuntu/Raspberry Pi OS, Fedora, Arch, etc.)
-- **Python**: 3.7 or higher
-- **gphoto2**: Command-line tool for camera communication (not a Python package)
-- **tkinter**: Usually comes with Python
-- **Architecture**: x86_64, arm64, or armv7 (Raspberry Pi)
+The following dependencies will be **automatically installed** during the installation process:
 
-## Installation Methods
+- **Python 3.7+** - Will be installed automatically if missing
+- **gphoto2** - Command-line tool for camera communication (will be installed automatically if missing)
+- **tkinter** - GUI library (usually comes with Python, will be installed if needed)
 
-### Method 1: One-Liner Installation (Recommended)
+**Note:** The installer handles all dependency installation automatically. You only need:
+- Internet connection
+- `sudo` access (for installing system packages)
+- A supported Linux distribution (Debian/Ubuntu/Raspberry Pi OS)
 
-The simplest installation method - downloads and installs everything automatically:
 
-```bash
-curl -fsSL https://raw.githubusercontent.com/AlexandreMuralha/camCtrl/main/installers/linux/install.sh | bash
-```
-
-**What happens:**
-1. Downloads installer script (~50-100KB)
-2. Script automatically downloads application files from GitHub
-3. Checks system dependencies
-4. Installs missing dependencies via package manager
-5. Sets up Python environment
-6. Installs application
-7. Creates launcher and desktop integration
-8. Cleans up temporary files
-
-**No manual steps required!**
-
-### Method 2: Minimal Installer Package
-
-If you prefer to download a package first:
-
-```bash
-# Download the minimal installer package
-wget https://github.com/AlexandreMuralha/camCtrl/releases/download/v0.4/camctrl-installer.tar.gz
-
-# Extract
-tar -xzf camctrl-installer.tar.gz
-
-# Enter directory
-cd camctrl-installer
-
-# Run installer
-bash install.sh
-```
-
-### Method 3: From Source (Development)
-
-For developers or contributors:
-
-```bash
-# Clone repository
-git clone https://github.com/AlexandreMuralha/camCtrl.git
-cd camctrl
-
-# Run installer
-bash installers/linux/install.sh
-```
 
 ## Installation Locations
 
@@ -136,22 +90,62 @@ Default location:
 
 You can change this in the application interface.
 
-## Dependency Installation
+## Manual Installation (If Auto-Installation Fails)
 
-The installer automatically installs missing dependencies:
+If the automatic dependency installation encounters issues, you can manually install the required dependencies before running the installer.
 
-### Python
-- **Debian/Ubuntu/Raspberry Pi OS**: `apt-get install python3 python3-pip python3-venv`
-- **Fedora/RHEL**: `yum install python3 python3-pip`
-- **Arch**: `pacman -S python python-pip`
+### Install Python 3.7+
 
-### gphoto2
-- **Debian/Ubuntu/Raspberry Pi OS**: `apt-get install gphoto2` (only the command-line tool needed)
-- **Fedora/RHEL**: `yum install gphoto2` (only the command-line tool needed)
-- **Arch**: `pacman -S gphoto2` (only the command-line tool needed)
+**For Debian/Ubuntu/Raspberry Pi OS:**
 
-**Note:** CamCtrl uses gphoto2 as a command-line tool via subprocess. No Python packages or development headers are required!
-- **Arch**: `pacman -S gphoto2 libgphoto2`
+```bash
+sudo apt-get update
+sudo apt-get install -y python3 python3-pip python3-venv python3-tk
+```
+
+**Verify installation:**
+```bash
+python3 --version  # Should show Python 3.7 or higher
+```
+
+### Install gphoto2
+
+**For Debian/Ubuntu/Raspberry Pi OS:**
+
+```bash
+sudo apt-get update
+sudo apt-get install -y gphoto2
+```
+
+**Verify installation:**
+```bash
+gphoto2 --version  # Should show gphoto2 version
+```
+
+### Install tkinter (if missing)
+
+**For Debian/Ubuntu/Raspberry Pi OS:**
+
+```bash
+sudo apt-get install -y python3-tk
+```
+
+**Verify installation:**
+```bash
+python3 -c "import tkinter"  # Should run without errors
+```
+
+### After Manual Installation
+
+Once all dependencies are manually installed, run the installer again:
+
+```bash
+curl -fsSL https://raw.githubusercontent.com/AlexandreMuralha/camCtrl/main/installers/linux/install.sh | bash
+```
+
+The installer will detect the existing dependencies and skip the installation step.
+
+**Note:** CamCtrl uses gphoto2 as a command-line tool via subprocess. No Python packages or development headers are required.
 
 ## Checking Dependencies
 
@@ -172,43 +166,43 @@ bash installers/linux/check_dependencies.sh
 
 ### Python Not Found
 
-If Python installation fails:
+If Python installation fails, manually install:
+
 ```bash
-# Debian/Ubuntu
 sudo apt-get update
-sudo apt-get install python3 python3-pip python3-venv
+sudo apt-get install -y python3 python3-pip python3-venv python3-tk
+```
 
-# Fedora
-sudo yum install python3 python3-pip
-
-# Arch
-sudo pacman -S python python-pip
+**Verify installation:**
+```bash
+python3 --version  # Should show Python 3.7 or higher
 ```
 
 ### gphoto2 Not Found
 
-If gphoto2 installation fails:
+If gphoto2 installation fails, manually install:
+
 ```bash
-# Debian/Ubuntu
 sudo apt-get update
-sudo apt-get install gphoto2
-
-# Fedora
-sudo yum install gphoto2
-
-# Arch
-sudo pacman -S gphoto2
+sudo apt-get install -y gphoto2
 ```
 
-### Icon Not Showing
-
-If the application icon doesn't appear:
+**Verify installation:**
 ```bash
-# Update icon cache
-gtk-update-icon-cache -f -t ~/.local/share/icons/hicolor
+gphoto2 --version  # Should show gphoto2 version
+```
 
-# Update desktop database
-update-desktop-database ~/.local/share/applications
+### tkinter Not Found
+
+If tkinter is missing (usually comes with Python):
+
+```bash
+sudo apt-get install -y python3-tk
+```
+
+**Verify installation:**
+```bash
+python3 -c "import tkinter"  # Should run without errors
 ```
 
 ### Launcher Not Found
@@ -292,42 +286,4 @@ sudo rm -f /usr/share/applications/camctrl.desktop
 # Remove config (optional)
 rm -rf ~/.config/camctrl
 ```
-
-## Support
-
-For issues, questions, or contributions:
-- [GitHub Issues](https://github.com/AlexandreMuralha/camCtrl/issues)
-- [Documentation](https://github.com/AlexandreMuralha/camCtrl)
-
-## Advanced Usage
-
-### Custom Installation Directory
-
-Edit `install.sh` and change `INSTALL_DIR` variable before running.
-
-### Development Installation
-
-For development, you can install in editable mode:
-
-```bash
-cd camctrl
-python3 -m venv venv
-source venv/bin/activate
-pip install -r packaging/requirements.txt
-python3 camCtrl.py
-```
-
-## Building Release Packages
-
-To create release packages:
-
-```bash
-bash installers/linux/create_release_package.sh [version]
-```
-
-This creates:
-- `camctrl-installer-v0.4.tar.gz` - Minimal installer package
-- `camctrl-linux-v0.4.tar.gz` - Full release package
-
-Packages are created in `dist/linux/` directory.
 
