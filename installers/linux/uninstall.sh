@@ -82,12 +82,10 @@ read -p "Remove application icons? (y/N): " -n 1 -r
 echo ""
 if [[ $REPLY =~ ^[Yy]$ ]]; then
     echo -e "${BLUE}Removing icons...${NC}"
-    for size in 16x16 32x32 48x48 64x64 128x128 256x256 scalable; do
-        if [ -d "$ICON_BASE_DIR/$size/apps" ]; then
-            rm -f "$ICON_BASE_DIR/$size/apps/${APP_NAME}.png" 2>/dev/null || true
-            rm -f "$ICON_BASE_DIR/$size/apps/${APP_NAME}.svg" 2>/dev/null || true
-        fi
-    done
+    # Only remove SVG from scalable directory (we only use SVG now)
+    if [ -f "$ICON_BASE_DIR/scalable/apps/${APP_NAME}.svg" ]; then
+        rm -f "$ICON_BASE_DIR/scalable/apps/${APP_NAME}.svg"
+    fi
     # Update icon cache
     if command -v gtk-update-icon-cache &> /dev/null; then
         gtk-update-icon-cache -f -t "$ICON_BASE_DIR" 2>/dev/null || true
