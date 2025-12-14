@@ -7,7 +7,7 @@ Remote control for DSLR and mirrorless cameras via USB connection. Built with Py
 **One-line installation for Linux/Raspberry Pi:**
 
 ```bash
-curl -fsSL https://raw.githubusercontent.com/yourusername/camctrl/main/installers/linux/install.sh | bash
+curl -fsSL https://raw.githubusercontent.com/AlexandreMuralha/camCtrl/main/installers/linux/install.sh | bash
 ```
 
 That's it! The installer will automatically:
@@ -23,7 +23,7 @@ That's it! The installer will automatically:
 ### Minimal Installer Package
 
 ```bash
-wget https://github.com/yourusername/camctrl/releases/download/v0.4/camctrl-installer.tar.gz
+wget https://github.com/AlexandreMuralha/camCtrl/releases/download/v0.4/camctrl-installer.tar.gz
 tar -xzf camctrl-installer.tar.gz
 cd camctrl-installer
 bash install.sh
@@ -32,14 +32,14 @@ bash install.sh
 ### From Source (Development)
 
 ```bash
-git clone https://github.com/yourusername/camctrl.git
+git clone https://github.com/AlexandreMuralha/camCtrl.git
 cd camctrl
 bash installers/linux/install.sh
 ```
 
 ## Requirements
 
-- **Python 3.8+** (will be installed automatically if missing)
+- **Python 3.7+** (will be installed automatically if missing)
 - **gphoto2** (will be installed automatically if missing)
 - **tkinter** (usually comes with Python)
 - **Linux/Raspberry Pi OS** (Debian/Ubuntu-based distributions)
@@ -105,7 +105,7 @@ bash installers/linux/uninstall.sh
 Or if installed via the one-liner method, download the uninstaller:
 
 ```bash
-curl -fsSL https://raw.githubusercontent.com/yourusername/camctrl/main/installers/linux/uninstall.sh | bash
+curl -fsSL https://raw.githubusercontent.com/AlexandreMuralha/camCtrl/main/installers/linux/uninstall.sh | bash
 ```
 
 ## Troubleshooting

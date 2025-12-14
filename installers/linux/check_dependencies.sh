@@ -21,10 +21,10 @@ if command -v python3 &> /dev/null; then
     PYTHON_MAJOR=$(echo "$PYTHON_VERSION" | cut -d. -f1)
     PYTHON_MINOR=$(echo "$PYTHON_VERSION" | cut -d. -f2)
     
-    if [ "$PYTHON_MAJOR" -ge 3 ] && ([ "$PYTHON_MAJOR" -gt 3 ] || [ "$PYTHON_MINOR" -ge 8 ]); then
+    if [ "$PYTHON_MAJOR" -ge 3 ] && ([ "$PYTHON_MAJOR" -gt 3 ] || [ "$PYTHON_MINOR" -ge 7 ]); then
         echo -e "${GREEN}✓ Python $PYTHON_VERSION (OK)${NC}"
     else
-        echo -e "${RED}✗ Python $PYTHON_VERSION (Python 3.8+ required)${NC}"
+        echo -e "${RED}✗ Python $PYTHON_VERSION (Python 3.7+ required)${NC}"
         ALL_OK=false
     fi
 else

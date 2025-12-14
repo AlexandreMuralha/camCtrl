@@ -7,7 +7,7 @@ name = "camctrl"
 version = "0.4"
 description = "Remote control for DSLR and mirrorless cameras via USB"
 readme = "README.md"
-requires-python = ">=3.8"
+requires-python = ">=3.7"
 dependencies = [
     "gphoto2>=2.5.0",
 ]

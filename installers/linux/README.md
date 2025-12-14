@@ -7,13 +7,13 @@ This guide provides detailed instructions for installing CamCtrl on Linux and Ra
 **Easiest method - one command:**
 
 ```bash
-curl -fsSL https://raw.githubusercontent.com/yourusername/camctrl/main/installers/linux/install.sh | bash
+curl -fsSL https://raw.githubusercontent.com/AlexandreMuralha/camCtrl/main/installers/linux/install.sh | bash
 ```
 
 ## System Requirements
 
 - **Operating System**: Linux (Debian/Ubuntu/Raspberry Pi OS, Fedora, Arch, etc.)
-- **Python**: 3.8 or higher
+- **Python**: 3.7 or higher
 - **gphoto2**: System library for camera communication
 - **tkinter**: Usually comes with Python
 - **Architecture**: x86_64, arm64, or armv7 (Raspberry Pi)
@@ -25,7 +25,7 @@ curl -fsSL https://raw.githubusercontent.com/yourusername/camctrl/main/installer
 The simplest installation method - downloads and installs everything automatically:
 
 ```bash
-curl -fsSL https://raw.githubusercontent.com/yourusername/camctrl/main/installers/linux/install.sh | bash
+curl -fsSL https://raw.githubusercontent.com/AlexandreMuralha/camCtrl/main/installers/linux/install.sh | bash
 ```
 
 **What happens:**
@@ -46,7 +46,7 @@ If you prefer to download a package first:
 
 ```bash
 # Download the minimal installer package
-wget https://github.com/yourusername/camctrl/releases/download/v0.4/camctrl-installer.tar.gz
+wget https://github.com/AlexandreMuralha/camCtrl/releases/download/v0.4/camctrl-installer.tar.gz
 
 # Extract
 tar -xzf camctrl-installer.tar.gz
@@ -64,7 +64,7 @@ For developers or contributors:
 
 ```bash
 # Clone repository
-git clone https://github.com/yourusername/camctrl.git
+git clone https://github.com/AlexandreMuralha/camCtrl.git
 cd camctrl
 
 # Run installer
@@ -257,7 +257,7 @@ bash installers/linux/uninstall.sh
 Or download and run:
 
 ```bash
-curl -fsSL https://raw.githubusercontent.com/yourusername/camctrl/main/installers/linux/uninstall.sh | bash
+curl -fsSL https://raw.githubusercontent.com/AlexandreMuralha/camCtrl/main/installers/linux/uninstall.sh | bash
 ```
 
 The uninstaller will:
@@ -293,8 +293,8 @@ rm -rf ~/.config/camctrl
 ## Support
 
 For issues, questions, or contributions:
-- [GitHub Issues](https://github.com/yourusername/camctrl/issues)
-- [Documentation](https://github.com/yourusername/camctrl)
+- [GitHub Issues](https://github.com/AlexandreMuralha/camCtrl/issues)
+- [Documentation](https://github.com/AlexandreMuralha/camCtrl)
 
 ## Advanced Usage
 
