@@ -14,7 +14,7 @@ curl -fsSL https://raw.githubusercontent.com/AlexandreMuralha/camCtrl/main/insta
 
 - **Operating System**: Linux (Debian/Ubuntu/Raspberry Pi OS, Fedora, Arch, etc.)
 - **Python**: 3.7 or higher
-- **gphoto2**: System library for camera communication
+- **gphoto2**: Command-line tool for camera communication (not a Python package)
 - **tkinter**: Usually comes with Python
 - **Architecture**: x86_64, arm64, or armv7 (Raspberry Pi)
 
@@ -99,7 +99,7 @@ The installer automatically detects if you're running as root and uses system-wi
 
 2. **Python Environment**
    - Virtual environment with all Python dependencies
-   - gphoto2 Python package
+   - No Python packages required (uses standard library only)
 
 3. **System Integration**
    - Launcher command (`camctrl`)
@@ -146,8 +146,11 @@ The installer automatically installs missing dependencies:
 - **Arch**: `pacman -S python python-pip`
 
 ### gphoto2
-- **Debian/Ubuntu/Raspberry Pi OS**: `apt-get install gphoto2 libgphoto2-dev`
-- **Fedora/RHEL**: `yum install gphoto2 libgphoto2-devel`
+- **Debian/Ubuntu/Raspberry Pi OS**: `apt-get install gphoto2` (only the command-line tool needed)
+- **Fedora/RHEL**: `yum install gphoto2` (only the command-line tool needed)
+- **Arch**: `pacman -S gphoto2` (only the command-line tool needed)
+
+**Note:** CamCtrl uses gphoto2 as a command-line tool via subprocess. No Python packages or development headers are required!
 - **Arch**: `pacman -S gphoto2 libgphoto2`
 
 ## Checking Dependencies
@@ -188,13 +191,13 @@ If gphoto2 installation fails:
 ```bash
 # Debian/Ubuntu
 sudo apt-get update
-sudo apt-get install gphoto2 libgphoto2-dev
+sudo apt-get install gphoto2
 
 # Fedora
-sudo yum install gphoto2 libgphoto2-devel
+sudo yum install gphoto2
 
 # Arch
-sudo pacman -S gphoto2 libgphoto2
+sudo pacman -S gphoto2
 ```
 
 ### Icon Not Showing

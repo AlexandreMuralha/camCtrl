@@ -135,49 +135,23 @@ fi
 
 echo -e "${GREEN}✓ Python $PYTHON_VERSION found${NC}"
 
-# Check gphoto2 and development packages
-GPHOTO2_OK=true
+# Check gphoto2 command-line tool (we only need the CLI tool, not Python package)
 if ! command -v gphoto2 &> /dev/null; then
-    GPHOTO2_OK=false
-fi
-
-# Check for pkg-config and libgphoto2 development headers
-if ! command -v pkg-config &> /dev/null || ! pkg-config --exists libgphoto2 2>/dev/null; then
-    GPHOTO2_OK=false
-fi
-
-if [ "$GPHOTO2_OK" = false ]; then
-    echo -e "${YELLOW}gphoto2 or development packages not found. Attempting to install...${NC}"
+    echo -e "${YELLOW}gphoto2 command-line tool not found. Attempting to install...${NC}"
     if command -v apt-get &> /dev/null; then
-        sudo apt-get update && sudo apt-get install -y gphoto2 libgphoto2-dev pkg-config python3-dev build-essential
+        sudo apt-get update && sudo apt-get install -y gphoto2
     elif command -v yum &> /dev/null; then
-        sudo yum install -y gphoto2 libgphoto2-devel pkgconfig python3-devel gcc
+        sudo yum install -y gphoto2
     elif command -v pacman &> /dev/null; then
-        sudo pacman -S --noconfirm gphoto2 libgphoto2 pkg-config python base-devel
+        sudo pacman -S --noconfirm gphoto2
     else
         echo -e "${RED}Error: Could not install gphoto2. Please install it manually.${NC}"
-        echo -e "${RED}Required packages: gphoto2, libgphoto2-dev, pkg-config, python3-dev, build-essential${NC}"
+        echo -e "${RED}Required package: gphoto2 (command-line tool)${NC}"
         exit 1
-    fi
-    
-    # Verify installation and update library cache
-    echo -e "${BLUE}Updating library cache...${NC}"
-    sudo ldconfig 2>/dev/null || true
-    
-    # Wait a moment for system to update
-    sleep 1
-    
-    # Verify pkg-config can find libgphoto2
-    if ! pkg-config --exists libgphoto2 2>/dev/null; then
-        echo -e "${YELLOW}Warning: pkg-config cannot find libgphoto2 immediately.${NC}"
-        echo -e "${YELLOW}This may resolve after system refresh. Continuing installation...${NC}"
-        echo -e "${YELLOW}If installation fails, manually run: sudo apt-get install -y libgphoto2-dev pkg-config python3-dev build-essential${NC}"
-    else
-        echo -e "${GREEN}✓ libgphoto2 development packages verified${NC}"
     fi
 fi
 
-echo -e "${GREEN}✓ gphoto2 and development packages found${NC}"
+echo -e "${GREEN}✓ gphoto2 command-line tool found${NC}"
 
 # Create installation directory
 echo -e "${BLUE}Creating installation directory...${NC}"

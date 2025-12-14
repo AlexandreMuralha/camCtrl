@@ -1,5 +1,7 @@
 # Python dependencies for CamCtrl
 # Note: tkinter is usually system-provided and doesn't need to be in requirements.txt
+# Note: gphoto2 is used as a command-line tool via subprocess, not as a Python package
+# All required Python libraries are part of the standard library
 
-gphoto2>=2.5.0
+# No external Python dependencies required
 

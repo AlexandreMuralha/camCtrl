@@ -16,9 +16,11 @@ setup(
     long_description=open(os.path.join(project_root, "README.md")).read() if os.path.exists(os.path.join(project_root, "README.md")) else "",
     long_description_content_type="text/markdown",
     author="CamCtrl Contributors",
-    python_requires=">=3.8",
+    python_requires=">=3.7",
     install_requires=[
-        "gphoto2>=2.5.0",
+        # No external Python dependencies required
+        # gphoto2 is used as a command-line tool, not a Python package
+        # All required libraries are standard library or system-provided
     ],
     # Note: We don't package the files here - the installer script handles that
     # This setup.py is mainly for creating the launcher command

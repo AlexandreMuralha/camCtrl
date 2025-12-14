@@ -9,7 +9,8 @@ description = "Remote control for DSLR and mirrorless cameras via USB"
 readme = "README.md"
 requires-python = ">=3.7"
 dependencies = [
-    "gphoto2>=2.5.0",
+    # No external dependencies - all libraries are standard library or system-provided
+    # gphoto2 is used as a command-line tool, not a Python package
 ]
 
 [project.scripts]

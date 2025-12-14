@@ -40,9 +40,11 @@ bash installers/linux/install.sh
 ## Requirements
 
 - **Python 3.7+** (will be installed automatically if missing)
-- **gphoto2** (will be installed automatically if missing)
+- **gphoto2 command-line tool** (will be installed automatically if missing)
 - **tkinter** (usually comes with Python)
 - **Linux/Raspberry Pi OS** (Debian/Ubuntu-based distributions)
+
+**Note:** CamCtrl uses the `gphoto2` command-line tool via subprocess - no Python packages need to be compiled or installed!
 
 ## Usage
 
