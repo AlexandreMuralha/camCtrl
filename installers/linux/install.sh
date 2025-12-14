@@ -149,15 +149,31 @@ fi
 if [ "$GPHOTO2_OK" = false ]; then
     echo -e "${YELLOW}gphoto2 or development packages not found. Attempting to install...${NC}"
     if command -v apt-get &> /dev/null; then
-        sudo apt-get update && sudo apt-get install -y gphoto2 libgphoto2-dev pkg-config python3-dev
+        sudo apt-get update && sudo apt-get install -y gphoto2 libgphoto2-dev pkg-config python3-dev build-essential
     elif command -v yum &> /dev/null; then
-        sudo yum install -y gphoto2 libgphoto2-devel pkgconfig python3-devel
+        sudo yum install -y gphoto2 libgphoto2-devel pkgconfig python3-devel gcc
     elif command -v pacman &> /dev/null; then
-        sudo pacman -S --noconfirm gphoto2 libgphoto2 pkg-config python
+        sudo pacman -S --noconfirm gphoto2 libgphoto2 pkg-config python base-devel
     else
         echo -e "${RED}Error: Could not install gphoto2. Please install it manually.${NC}"
-        echo -e "${RED}Required packages: gphoto2, libgphoto2-dev, pkg-config, python3-dev${NC}"
+        echo -e "${RED}Required packages: gphoto2, libgphoto2-dev, pkg-config, python3-dev, build-essential${NC}"
         exit 1
+    fi
+    
+    # Verify installation and update library cache
+    echo -e "${BLUE}Updating library cache...${NC}"
+    sudo ldconfig 2>/dev/null || true
+    
+    # Wait a moment for system to update
+    sleep 1
+    
+    # Verify pkg-config can find libgphoto2
+    if ! pkg-config --exists libgphoto2 2>/dev/null; then
+        echo -e "${YELLOW}Warning: pkg-config cannot find libgphoto2 immediately.${NC}"
+        echo -e "${YELLOW}This may resolve after system refresh. Continuing installation...${NC}"
+        echo -e "${YELLOW}If installation fails, manually run: sudo apt-get install -y libgphoto2-dev pkg-config python3-dev build-essential${NC}"
+    else
+        echo -e "${GREEN}✓ libgphoto2 development packages verified${NC}"
     fi
 fi
 
