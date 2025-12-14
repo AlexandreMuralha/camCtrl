@@ -1,6 +1,6 @@
 # CamCtrl 0.4
 
-Remote control for DSLR and mirrorless cameras via USB connection. Built with Python and Tkinter, CamCtrl provides an intuitive graphical interface for camera operations using the gphoto2 library.
+CamCtrl is a desktop interface control for digital cameras via USB connection. Built with Python and Tkinter, CamCtrl provides an intuitive graphical interface for camera operations using the gphoto2 library. It is particularly suitable for astrophotography or other captures that require time-lapse photography and controlling the camera from a desktop environment.
 
 ## Quick Installation (Recommended)
 
