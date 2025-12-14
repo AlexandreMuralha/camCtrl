@@ -119,7 +119,7 @@ if ! command -v python3 &> /dev/null; then
     elif command -v pacman &> /dev/null; then
         sudo pacman -S --noconfirm python python-pip
     else
-        echo -e "${RED}Error: Could not install Python. Please install Python 3.8+ manually.${NC}"
+        echo -e "${RED}Error: Could not install Python. Please install Python 3.7+ manually.${NC}"
         exit 1
     fi
 fi
@@ -135,22 +135,33 @@ fi
 
 echo -e "${GREEN}✓ Python $PYTHON_VERSION found${NC}"
 
-# Check gphoto2
+# Check gphoto2 and development packages
+GPHOTO2_OK=true
 if ! command -v gphoto2 &> /dev/null; then
-    echo -e "${YELLOW}gphoto2 not found. Attempting to install...${NC}"
+    GPHOTO2_OK=false
+fi
+
+# Check for pkg-config and libgphoto2 development headers
+if ! command -v pkg-config &> /dev/null || ! pkg-config --exists libgphoto2 2>/dev/null; then
+    GPHOTO2_OK=false
+fi
+
+if [ "$GPHOTO2_OK" = false ]; then
+    echo -e "${YELLOW}gphoto2 or development packages not found. Attempting to install...${NC}"
     if command -v apt-get &> /dev/null; then
-        sudo apt-get update && sudo apt-get install -y gphoto2 libgphoto2-dev
+        sudo apt-get update && sudo apt-get install -y gphoto2 libgphoto2-dev pkg-config python3-dev
     elif command -v yum &> /dev/null; then
-        sudo yum install -y gphoto2 libgphoto2-devel
+        sudo yum install -y gphoto2 libgphoto2-devel pkgconfig python3-devel
     elif command -v pacman &> /dev/null; then
-        sudo pacman -S --noconfirm gphoto2 libgphoto2
+        sudo pacman -S --noconfirm gphoto2 libgphoto2 pkg-config python
     else
         echo -e "${RED}Error: Could not install gphoto2. Please install it manually.${NC}"
+        echo -e "${RED}Required packages: gphoto2, libgphoto2-dev, pkg-config, python3-dev${NC}"
         exit 1
     fi
 fi
 
-echo -e "${GREEN}✓ gphoto2 found${NC}"
+echo -e "${GREEN}✓ gphoto2 and development packages found${NC}"
 
 # Create installation directory
 echo -e "${BLUE}Creating installation directory...${NC}"
