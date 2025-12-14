@@ -15,8 +15,8 @@ NC='\033[0m' # No Color
 # Configuration
 APP_NAME="camctrl"
 APP_VERSION="0.4"
-GITHUB_USER="yourusername"  # Update this with your GitHub username
-GITHUB_REPO="camctrl"
+GITHUB_USER="AlexandreMuralha"
+GITHUB_REPO="camCtrl"
 GITHUB_BRANCH="main"
 GITHUB_BASE_URL="https://raw.githubusercontent.com/${GITHUB_USER}/${GITHUB_REPO}/${GITHUB_BRANCH}"
 
